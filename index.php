@@ -54,7 +54,7 @@
             <!--banniere promotion  -->
             <div class="row">
                 <div class="col-12 col-md-12" >
-                <img   src="img/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
+                <img   src="public/images/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
                 </div>
             </div>
 <!-- texte -->
