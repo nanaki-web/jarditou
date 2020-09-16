@@ -19,7 +19,7 @@
 <!-- logo+tout jardin -->
             <div class="row">
                 <div class="col-12 col-md-6 "> 
-                    <img src="img/jarditou_logo.jpg" class="img-fluid" alt="Image responsive">
+                    <img src="public/images/logo/jarditou_logo2.png" class="img-fluid" alt="Image responsive">
                 </div>
                 <div class="col-12 col-md-6">      
                   <h1 class="text-right mt-3"><strong>Tout le jardin</strong></h1>
@@ -37,13 +37,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="index.html">Accueil</a>
+                      <a class="nav-link" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="Tableau.html">Tableau</a>
+                      <a class="nav-link" href="Tableau.php">Tableau</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="Contact.html">contact</a> 
+                      <a class="nav-link" href="Contact.php">contact</a> 
                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
@@ -55,7 +55,7 @@
             <!--banniere promotion  -->
             <div class="row">
                 <div class="col-12 col-md-12" >
-                <img   src="img/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
+                <img   src="public/images/logo/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
                 </div>
             </div>
 <!-- Tableau -->
@@ -75,7 +75,7 @@
                     </thead>
                     <tbody>         
                     <tr class="bg-warning">
-                        <td><img src="img/7.jpg" class="img-fluid" alt="Image responsive"></td>
+                        <td><img src="public/images/produits/png/7.png" class="img-fluid" alt="Image responsive"></td>
                         <td>7</td>
                         <td>Barbecues</td>
                         <td>Aramis</td>
@@ -83,7 +83,7 @@
                         <td>Brun</td>
                     </tr>
                     <tr>
-                        <td><img src="img/8.jpg" class="img-fluid" alt="Image responsive"></td>
+                        <td><img src="public/images/produits/png/8.png" class="img-fluid" alt="Image responsive"></td>
                         <td>8</td>
                         <td>Barbecues</td>
                         <td>Athos</td>
@@ -91,14 +91,14 @@
                         <td>Noir</td>
                     </tr>
                     <tr class="bg-warning">
-                        <td><img src="img/11.jpg" class="img-fluid" alt="Image responsive"></td>
+                        <td><img src="public/images/produits/png/11.png" class="img-fluid" alt="Image responsive"></td>
                         <td>11</td>
                         <td>Barbecues</td>
                         <td>Clatronic</td>
                         <td>135.90€</td>
                         <td>Chrome</td>
                      <tr>
-                        <td><img src="img/12.jpg" class="img-fluid" alt="Image responsive"></td>
+                        <td><img src="public/images/produits/png/12.png" class="img-fluid" alt="Image responsive"></td>
                         <td>12</td>
                         <td>Barbecues</td>
                         <td>Camping</td>
@@ -106,7 +106,7 @@
                         <td>Noir</td>
                      </tr>
                      <tr class="bg-warning">
-                        <td><img src="img/13.jpg" class="img-fluid" alt="Image responsive"></td>
+                        <td><img src="public/images/produits/png/13.png" class="img-fluid" alt="Image responsive"></td>
                         <td>13</td>
                         <td>Brouette</td>
                         <td>Green</td>

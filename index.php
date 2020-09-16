@@ -19,7 +19,7 @@
 <!-- logo+tout jardin -->
             <div class="row">
                 <div class="col-12 col-md-6 "> 
-                    <img src="public/images/jarditou_logo.jpg" class="img-fluid" alt="Image responsive">
+                    <img src="public/images/logo/jarditou_logo2.png" class="img-fluid" alt="Image responsive">
                 </div>
                 <div class="col-12 col-md-6">      
                   <h1 class="text-right mt-3"><strong>Tout le jardin</strong></h1>
@@ -36,13 +36,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="index.html">Accueil </a>
+                      <a class="nav-link" href="index.php">Accueil </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="tableau.html">Tableau</a>
+                      <a class="nav-link" href="tableau.php">Tableau</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="contact.html">contact</a>                    
+                      <a class="nav-link" href="contact.php">contact</a>                    
                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
@@ -54,7 +54,7 @@
             <!--banniere promotion  -->
             <div class="row">
                 <div class="col-12 col-md-12" >
-                <img   src="public/images/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
+                <img   src="public/images/logo/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
                 </div>
             </div>
 <!-- texte -->
