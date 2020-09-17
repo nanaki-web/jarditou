@@ -1,10 +1,10 @@
 <div class="row">
-                <div class="col-12 col-md-12">
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                    <!-- navigation-->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>   
+    <div class="col-12 col-md-12">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- navigation-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+                </button>   
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -20,9 +20,9 @@
                     </div> 
                 </div>
             </nav>
-            </div>             
+        </div>             
     </div>
-
+</div>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
