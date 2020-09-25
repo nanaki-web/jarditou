@@ -119,7 +119,7 @@ echo "</div>";
 
 
 
-<!-- reference  pour info disabled -->
+<!-- reference / pour info disabled -->
 <div class="form-group">
   <label for="reference">Référence :</label>                  
    <input type="text" name="reference" class="form-control" id="nom" disabled placeholder="<?php echo $produit->pro_ref ?>" >           
@@ -161,7 +161,7 @@ echo "</div>";
 </div>
 <!--  -->
 <div class="form-group">
-<p>produit bloqué :</p>
+<p>Produit bloqué :</p>
 <fieldset class="form-group">
   <div class="form-check form-check-inline">
     <input class="form-check-input" type="radio" name="produit_bloque"  disabled id="produit_bloque" value="oui" <?php  if ($produit->pro_bloque==1){ echo "checked";} ?> >
@@ -198,7 +198,8 @@ echo "</div>";
 <?php
   echo "</div> ";
   echo "</div> ";
-  ?>
+?>
+
 <?php
 
 include("footer.php");

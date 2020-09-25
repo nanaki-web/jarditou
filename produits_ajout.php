@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -57,14 +58,33 @@
                 <img   src="public/images/logo/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
                 </div>
             </div>
+<?php
+require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
+$db = connexionBase(); // Appel de la fonction de connexion
+// requete
+if (isset($_post["photo"]))
+{
+
+$requete = "insert into produits
+            (pro_ref,pro_cat_id,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_bloque,pro_d_ajout,pro_photo)
+            values
+            ('".$_post["reference"]."','".$_post["categorie"]."','".$_post["libelle"]."','".$_post["description"]."','".$_post["prix"]."','".$_post["stock"]."','".$_post["couleur"]."','".$_post["refebloquerence"]."','".$_post["photo"]."')";
+
+$result = mysql_query($requete);
+
+  if (!$result)
+  {
+    die ('Erreur dans la requete :')
+  }
+}
+?>            
+
 <!-- formulaire -->
-<form>
-<!-- identifiant -->
-<div class="form-group">
-    <label for="identifiant">ID : </label>
-    <input type="text" name="identifiant" class="form-control" id="identifiant" aria-describedby="">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-</div>
+<form id="formu" name="formu" action="#" method="post">
+
+<?php
+echo '<div class=" col-12" >';
+?>
   <!-- référence -->
 <div class="form-group">
     <label for="reference">Référence : </label>
@@ -86,7 +106,12 @@
 <!-- description -->
 <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
+    <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+</div>
+<!-- Prix -->
+<div class="form-group">
+  <label for="reference">Prix :</label>                  
+  <input type="text" name="prix" class="form-control" id="nom" aria-describedby="">           
 </div>
 <!-- stock -->
 <div class="form-group">
@@ -100,15 +125,56 @@
     <input type="text" name="couleur" class="form-control" id="couleur" aria-describedby="">
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
-<!-- bouton radio produit bloqué/oui -->
-<div class="form-check">
-<label class="form-check-label" for="boutonRadio">Produit bloqué : </label>
-  <input class="form-check-input" type="radio" name="bloque" id="bloque" value="oui" >
-<!-- bouton radio produit bloqué/non -->
-<div class="form-check">
-<label class="form-check-label" for="boutonRadio">Non</label>
-  <input class="form-check-input" type="radio" name="bloque" id="bloque" value="non" >
 
+
+<p>Produit bloqué :</p>
+<div class="form-group">
+<!-- bouton radio produit bloqué/oui /valeur=1-->
+<div class="form-check form-check-inline">
+<label class="form-check-label" for="boutonRadio">Oui </label>
+  <input class="form-check-input" type="radio" name="bloque" id="bloque" value="1" >
+</div>
+<!-- bouton radio produit bloqué/non /valeur=Null-->
+<div class="form-check form-check-inline">
+<label class="form-check-label" for="boutonRadio">Non</label>
+  <input class="form-check-input" type="radio" name="bloque" id="bloque" value="Null" >
+  </div>
+  </div>
+ 
+  <!--Date d'ajout  -->
+  <div fieldset="form-group">
+    <label for="dateAjout">Date d'ajout : </label>
+    <input type="text" name="dateAjout" class="form-control" id="dateAjout" aria-describedby="">
+    
+</div>
+<!-- Date de modification -->
+<div class="form-group">
+    <label for="dateModification">Date de modification : </label>
+    <input type="text" name="dateModification" class="form-control" id="dateModification" disabled aria-describedby="">
+   
+</div>
+<!-- photo télécharger  -->
+
+<form>
+  <div class="form-group">
+    <label for="photo">Photo</label>
+    <input type="file" class="form-control-file" id="telechargerPhoto">
+  </div>
+</form>
+
+<div mt-2 >
+<!-- bouton retour/envoyer -->
+<a href="index.php" class="btn btn-dark" role="bouton " >Retour</a>
+<a href="detail.php" class="btn btn-warning" role="bouton " >Envoyer</a>
+</div>
+
+<br>
+
+<?php
+
+include("footer.php");
+
+?>
 
 
 
