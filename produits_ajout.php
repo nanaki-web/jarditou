@@ -59,28 +59,28 @@
                 </div>
             </div>
 <?php
-require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
-$db = connexionBase(); // Appel de la fonction de connexion
-// requete
-if (isset($_post["photo"]))
-{
+// require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
+// $db = connexionBase(); // Appel de la fonction de connexion
+// // requete
+// if (isset($_post["photo"]))
+// {
 
-$requete = "insert into produits
-            (pro_ref,pro_cat_id,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_bloque,pro_d_ajout,pro_photo)
-            values
-            ('".$_post["reference"]."','".$_post["categorie"]."','".$_post["libelle"]."','".$_post["description"]."','".$_post["prix"]."','".$_post["stock"]."','".$_post["couleur"]."','".$_post["refebloquerence"]."','".$_post["photo"]."')";
+// $requete = "insert into produits
+//             (pro_ref,pro_cat_id,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_bloque,pro_d_ajout,pro_photo)
+//             values
+//             ('".$_post["reference"]."','".$_post["categorie"]."','".$_post["libelle"]."','".$_post["description"]."','".$_post["prix"]."','".$_post["stock"]."','".$_post["couleur"]."','".$_post["refebloquerence"]."','".$_post["photo"]."')";
 
-$result = mysql_query($requete);
+// $result = mysql_query($requete);
 
-  if (!$result)
-  {
-    die ('Erreur dans la requete :')
-  }
-}
+//   if (!$result)
+//   {
+//     die ('Erreur dans la requete :')
+//   }
+// }
 ?>            
 
 <!-- formulaire -->
-<form id="formu" name="formu" action="#" method="post">
+<form id="formu" name="formu" action="" method="post">
 
 <?php
 echo '<div class=" col-12" >';
@@ -161,6 +161,23 @@ echo '<div class=" col-12" >';
     <input type="file" class="form-control-file" id="telechargerPhoto">
   </div>
 </form>
+
+<?php
+require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
+$db = connexionBase(); // Appel de la fonction de connexion
+// $pro_id = $_GET["id"];
+if (isset ($_POST ['pro_ref']) and isset($_POST['pro_libelle']) and isset($_POST['pro_description']))
+{
+  $requete = $bd->prepare(" INSERT INTO produits (pro_ref,pro_libelle,pro_description) VALUES(:new_pro_ref,:new_pro_libelle,:new_pro_description)");
+  $requete->execute(array());
+  
+}
+
+?>
+
+
+
+
 
 <div mt-2 >
 <!-- bouton retour/envoyer -->
