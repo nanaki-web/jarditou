@@ -58,26 +58,7 @@
                 <img   src="public/images/logo/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
                 </div>
             </div>
-<?php
-// require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
-// $db = connexionBase(); // Appel de la fonction de connexion
-// // requete
-// if (isset($_post["photo"]))
-// {
-
-// $requete = "insert into produits
-//             (pro_ref,pro_cat_id,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_bloque,pro_d_ajout,pro_photo)
-//             values
-//             ('".$_post["reference"]."','".$_post["categorie"]."','".$_post["libelle"]."','".$_post["description"]."','".$_post["prix"]."','".$_post["stock"]."','".$_post["couleur"]."','".$_post["refebloquerence"]."','".$_post["photo"]."')";
-
-// $result = mysql_query($requete);
-
-//   if (!$result)
-//   {
-//     die ('Erreur dans la requete :')
-//   }
-// }
-?>            
+         
 
 <!-- formulaire -->
 <form id="formu" name="formu" action="" method="post">
@@ -163,15 +144,28 @@ echo '<div class=" col-12" >';
 </form>
 
 <?php
+// require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
+// $db = connexionBase(); // Appel de la fonction de connexion
+// // $pro_id = $_GET["id"];
+
+
+//   $requete = $bd->prepare('INSERT INTO produits (pro_ref,pro_libelle,pro_description) VALUES(:new_pro_ref,:new_pro_libelle,:new_pro_description)');
+//   $requete->execute(array(
+//                           ':new_pro_ref' => $new_pro_ref,
+//                           ':new_pro_libelle' => $new_pro_libelle,
+//                           ':new_pro_description' => $new_pro_description));
+//   echo "produit ajouté à la liste" ;                     
+  
 require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
 $db = connexionBase(); // Appel de la fonction de connexion
-// $pro_id = $_GET["id"];
-if (isset ($_POST ['pro_ref']) and isset($_POST['pro_libelle']) and isset($_POST['pro_description']))
+
+if (isset ($_POST ['pro_ref']) AND isset($_POST['pro_libelle']) AND isset($_POST['pro_description']) AND isset($_POST['pro_prix']) AND isset($_POST['pro_stock']) AND isset($_POST['pro_couleur']) AND isset($_POST['pro_photo']) AND isset($_POST['pro_d_ajout']) AND isset($_POST['pro_bloque']))
 {
-  $requete = $bd->prepare(" INSERT INTO produits (pro_ref,pro_libelle,pro_description) VALUES(:new_pro_ref,:new_pro_libelle,:new_pro_description)");
-  $requete->execute(array());
+$requete = $bd->exec('INSERT INTO produits(pro_ref,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_photo,pro_d_ajout,pro_bloque)
+                    VALUES ('.$pro_ref','.$pro_libelle','.$pro_description','.$pro_prix','.$pro_stock','.$pro_couleur','.$pro_photo','.$pro_photo','.$pro_d_ajout','.$pro_bloque')');
   
 }
+
 
 ?>
 
