@@ -1,71 +1,22 @@
+<?php
+include("connexion_bdd.php");
+include("header.php");
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Jardintou accueil</title>
-</head>
-<body>
-<div class="container-fluid">
-    <!-- <div class="container-fluid"> 
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-8"></div> 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4"></div>
-        </div> -->
-          
-<!-- logo+tout jardin -->
-            <div class="row">
-                <div class="col-12 col-md-6 "> 
-                    <img src="public/images/logo/jarditou_logo2.png" class="img-fluid" alt="Image responsive">
-                </div>
-                <div class="col-12 col-md-6">      
-                  <h1 class="text-right mt-3"><strong>Tout le jardin</strong></h1>
-                </div> 
-            </div>
-<!-- navigation -->
-        
-           
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="index.php">Jarditou.com</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="index.php">Accueil </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="tableau.php">Tableau</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contact.php">Contact</a>                    
-                    </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Votre promotion" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                  </form>
-                </div>
-              </nav>
-            <!--banniere promotion  -->
-            <div class="row">
-                <div class="col-12 col-md-12" >
-                <img   src="public/images/logo/promotion.jpg" class="img-fluid w-100 " alt="Image responsive">
-                </div>
-            </div>
-         
+?>
+
 
 <!-- formulaire -->
-<form id="formu" name="formu" action="" method="post">
+<form id="formu" name="formu" action="produits_ajout_script.php" method="POST">
 
 <?php
 echo '<div class=" col-12" >';
 ?>
+<!-- identifiant -->
+<div class="form-group">
+    <label for="identifiant">ID : </label>
+    <input type="text" name="identifiant" class="form-control" id="id" disabled aria-describedby="">
+    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+</div>
   <!-- référence -->
 <div class="form-group">
     <label for="reference">Référence : </label>
@@ -139,35 +90,11 @@ echo '<div class=" col-12" >';
 <form>
   <div class="form-group">
     <label for="photo">Photo</label>
-    <input type="file" class="form-control-file" id="telechargerPhoto">
+    <input type="file" name="photo" class="form-control-file" id="telechargerPhoto">
   </div>
 </form>
 
-<?php
-// require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
-// $db = connexionBase(); // Appel de la fonction de connexion
-// // $pro_id = $_GET["id"];
 
-
-//   $requete = $bd->prepare('INSERT INTO produits (pro_ref,pro_libelle,pro_description) VALUES(:new_pro_ref,:new_pro_libelle,:new_pro_description)');
-//   $requete->execute(array(
-//                           ':new_pro_ref' => $new_pro_ref,
-//                           ':new_pro_libelle' => $new_pro_libelle,
-//                           ':new_pro_description' => $new_pro_description));
-//   echo "produit ajouté à la liste" ;                     
-  
-require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
-$db = connexionBase(); // Appel de la fonction de connexion
-
-if (isset ($_POST ['pro_ref']) AND isset($_POST['pro_libelle']) AND isset($_POST['pro_description']) AND isset($_POST['pro_prix']) AND isset($_POST['pro_stock']) AND isset($_POST['pro_couleur']) AND isset($_POST['pro_photo']) AND isset($_POST['pro_d_ajout']) AND isset($_POST['pro_bloque']))
-{
-$requete = $bd->exec('INSERT INTO produits(pro_ref,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_photo,pro_d_ajout,pro_bloque)
-                    VALUES ('.$pro_ref','.$pro_libelle','.$pro_description','.$pro_prix','.$pro_stock','.$pro_couleur','.$pro_photo','.$pro_photo','.$pro_d_ajout','.$pro_bloque')');
-  
-}
-
-
-?>
 
 
 
@@ -176,7 +103,17 @@ $requete = $bd->exec('INSERT INTO produits(pro_ref,pro_libelle,pro_description,p
 <div mt-2 >
 <!-- bouton retour/envoyer -->
 <a href="index.php" class="btn btn-dark" role="bouton " >Retour</a>
-<a href="detail.php" class="btn btn-warning" role="bouton " >Envoyer</a>
+
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<!-- tu n'as pas de bouton submit normal que l'envoi du formulaire sne se fasse pas  -->
+<!-- --------------------------------------------------------------------------------------------------------- -->
+<input class="btn btn-primary" type="submit" value="Submit">
+
+
+
+
+
+
 </div>
 
 <br>
