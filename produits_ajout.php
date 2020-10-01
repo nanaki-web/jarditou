@@ -19,19 +19,19 @@ echo '<div class=" col-12" >';
 </div>
   <!-- référence -->
 <div class="form-group">
-    <label for="reference">Référence : </label>
+    <label for="reference">Référence *: </label>
     <input type="text" name="reference" class="form-control" id="reference" aria-describedby="">
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
   <!-- catégorie -->
 <div class="form-group">
-    <label for="categorie">Catégorie : </label>
+    <label for="categorie">Catégorie * : </label>
     <input type="text" name="categorie" class="form-control" id="categorie" aria-describedby="">
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
 <!-- libéllé -->
 <div class="form-group">
-    <label for="libelle">Libéllé : </label>
+    <label for="libelle">Libéllé *: </label>
     <input type="text" name="libelle" class="form-control" id="libelle" aria-describedby="">
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
@@ -42,12 +42,12 @@ echo '<div class=" col-12" >';
 </div>
 <!-- Prix -->
 <div class="form-group">
-  <label for="reference">Prix :</label>                  
+  <label for="reference">Prix *:</label>                  
   <input type="text" name="prix" class="form-control" id="nom" aria-describedby="">           
 </div>
 <!-- stock -->
 <div class="form-group">
-    <label for="stock">Stock : </label>
+    <label for="stock">Stock *: </label>
     <input type="text" name="stock" class="form-control" id="stock" aria-describedby="">
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
@@ -68,14 +68,14 @@ echo '<div class=" col-12" >';
 </div>
 <!-- bouton radio produit bloqué/non /valeur=Null-->
 <div class="form-check form-check-inline">
-<label class="form-check-label" for="boutonRadio">Non</label>
-  <input class="form-check-input" type="radio" name="bloque" id="bloque" value="Null" >
+<label class="form-check-label" for="boutonRadio" >Non</label>
+  <input class="form-check-input" type="radio" name="bloque" id="bloque" value="Null" checked  >
   </div>
   </div>
  
   <!--Date d'ajout  -->
   <div fieldset="form-group">
-    <label for="dateAjout">Date d'ajout : </label>
+    <label for="dateAjout">Date d'ajout *: </label>
     <input type="text" name="dateAjout" class="form-control" id="dateAjout" aria-describedby="">
     
 </div>
@@ -107,7 +107,7 @@ echo '<div class=" col-12" >';
 <!-- --------------------------------------------------------------------------------------------------------- -->
 <!-- tu n'as pas de bouton submit normal que l'envoi du formulaire sne se fasse pas  -->
 <!-- --------------------------------------------------------------------------------------------------------- -->
-<input class="btn btn-primary" type="submit" value="Submit">
+<input class="btn btn-primary" type="submit" value="envoyer">
 
 
 
