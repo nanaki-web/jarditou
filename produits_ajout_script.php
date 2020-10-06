@@ -73,7 +73,6 @@
 //     header("Location:produits_ajout.php");
 // }
 
-// autre tentative
 
 
 
@@ -84,6 +83,78 @@
 // // } 
 
 
+// autre tentative
+
+require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
+$db = connexionBase(); // Appel de la fonction de connexion
+// declaration des variables
+$reference = valid_donnees($_POST["reference"]);//1
+$categorie = valid_donnees($_POST["categorie"]);//2
+$libelle = valid_donnees($_POST["libelle"]);//3
+$description = valid_donnees($_POST["description"]);//4
+$prix = valid_donnees($_POST["prix"]);//5
+$stock = valid_donnees($_POST["stock"]);//6
+$couleur = valid_donnees($_POST["couleur"]);//7
+$photo = valid_donnees($_POST["photo"]);//8
+$dateAjout = valid_donnees($_POST["dateAjout"]);//9
+$bloque = valid_donnees($_POST["bloque"]);//10
+
+
+function valid_donnees($donnees)
+{
+    $donnees = trim($donnees); // trim == supprimer les espaces inutiles
+    $donnees = stripslashes($donnees); //stripslashes == supprimer les antislashes 
+    $donnees = htmlspecialchars($donnees); //htmlspecialchars == échapper certains caractères spéciaux comme les chevrons « < » et « > » en les transformant en entités HTML
+    return $donnees;
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $errors=[];
+
+    if (empty($_POST['reference']))
+    {
+        $errors['categorie'] = 'Veuillez inserer la categorie';
+        // header("Location:produits_ajout.php");
+    }
+
+
+    //verification du formulaire
+
+    if (empty($errors))
+    {
+        // preparation de la requete d'insertion
+        $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
+    VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
+
+// on lie chaque marqueur à une valeur
+
+        $pdoStat->bindParam(':categorie', $categorie,PDO::PARAM_INT);
+        $pdoStat->bindParam(':reference', $reference,PDO::PARAM_STR);
+        $pdoStat->bindParam(':libelle', $libelle,PDO::PARAM_STR);
+        $pdoStat->bindParam(':descrip', $description, PDO::PARAM_STR); // ici ton ;description n'en a pas du coup pas de correspondance entre les deux
+        $pdoStat->bindParam(':prix', $prix,PDO::PARAM_INT);
+        $pdoStat->bindParam(':stock', $stock,PDO::PARAM_INT);
+        $pdoStat->bindParam(':couleur', $couleur,PDO::PARAM_STR);
+        $pdoStat->bindParam(':photo', $photo,PDO::PARAM_STR);
+        $pdoStat->bindParam(':dateAjout', $dateAjout);
+        $pdoStat->bindParam(':produit_bloque', $bloque);
+
+
+// éxécution de la requete préparé
+
+        $pdoStat->execute();
+
+//Redirection vers le tableau
+        header("Location:tableau.php");
+        die();
+
+
+    }
+
+
+}
 
 
 

@@ -18,11 +18,13 @@ echo '<div class=" col-12" >';
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
   <!-- référence -->
+
 <div class="form-group">
     <label for="reference">Référence *: </label>
-    <input type="text" name="reference" class="form-control" id="reference" aria-describedby="">
+    <input type="text" name="reference" class="form-control" id="reference" aria-describedby="" >
     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 </div>
+
   <!-- catégorie -->
 <div class="form-group">
     <label for="categorie">Catégorie * : </label>
