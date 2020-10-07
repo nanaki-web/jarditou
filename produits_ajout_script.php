@@ -111,19 +111,19 @@ function valid_donnees($donnees)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    $errors=[];
-
-    if (empty($_POST['reference']))
+    //verification du formulaire
+    if (isset ($_POST ["pro_ref"]) AND ($_POST ["pro_cat_id"]) AND (($_POST["pro_libelle"]) AND ($_POST["pro_description"]) AND ($_POST["pro_prix"]) AND ($_POST["pro_stock"]) AND ($_POST["pro_couleur"]) AND ($_POST["pro_photo"]) AND ($_POST["pro_d_ajout"]) AND($_POST["pro_bloque"]))
+    && (!empty($_POST["pro_ref"]) && ($_POST["pro_cat_id"]) && ($_POST["pro_libelle"]) && ($_POST["pro_description"]) && ($_POST["pro_prix"] )&& ($_POST["pro_stock"])&& ($_POST["pro_couleur"]) && ($_POST["pro_photo"]) && ($_POST["pro_d_ajout"]) && ($_POST["pro_bloque"]))) 
+    && preg_match 
     {
-        $errors['categorie'] = 'Veuillez inserer la categorie';
-        // header("Location:produits_ajout.php");
+       
     }
 
 
-    //verification du formulaire
+    
 
-    if (empty($errors))
-    {
+    
+    
         // preparation de la requete d'insertion
         $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
     VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
@@ -152,7 +152,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 
     }
-
+    else
+    {
+        header("Location:produits_ajout.php");
+    }
 
 }
 

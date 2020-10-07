@@ -15,21 +15,23 @@ echo '<div class=" col-12" >';
 <div class="form-group">
     <label for="identifiant">ID : </label>
     <input type="text" name="identifiant" class="form-control" id="id" disabled aria-describedby="">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+
 </div>
-  <!-- référence -->
+  <!-- // reference -->
 
 <div class="form-group">
     <label for="reference">Référence *: </label>
-    <input type="text" name="reference" class="form-control" id="reference" aria-describedby="" >
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    <input type="text" name="reference" class="form-control"   id="reference" aria-describedby="" >
+    
+
 </div>
 
   <!-- catégorie -->
 <div class="form-group">
     <label for="categorie">Catégorie * : </label>
     <input type="text" name="categorie" class="form-control" id="categorie" aria-describedby="">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    
+
 </div>
 <!-- libéllé -->
 <div class="form-group">
