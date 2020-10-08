@@ -1,10 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 include("connexion_bdd.php");
 include("header.php");
 
 ?>
 
-
+<p><span class="error">*remplir tout les champs </span></p>
 <!-- formulaire -->
 <form id="formu" name="formu" action="produits_ajout_script.php" method="POST">
 
@@ -20,9 +32,9 @@ echo '<div class=" col-12" >';
   <!-- // reference -->
 
 <div class="form-group">
-    <label for="reference">Référence *: </label>
+    <label for="reference">Référence : </label>
     <input type="text" name="reference" class="form-control"   id="reference" aria-describedby="" >
-    
+  
 
 </div>
 

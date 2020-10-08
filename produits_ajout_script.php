@@ -65,7 +65,8 @@
 // header("Location:tableau.php");
 
 //     }
-//     catch(PDOException $e){
+//     catch(PDOException $e)
+        // {
 //         echo 'Erreur : '.$e->getMessage();
 //     }
 // }
@@ -109,62 +110,50 @@ function valid_donnees($donnees)
 }
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    //verification du formulaire
-    if (isset ($_POST ["pro_ref"]) AND ($_POST ["pro_cat_id"]) AND (($_POST["pro_libelle"]) AND ($_POST["pro_description"]) AND ($_POST["pro_prix"]) AND ($_POST["pro_stock"]) AND ($_POST["pro_couleur"]) AND ($_POST["pro_photo"]) AND ($_POST["pro_d_ajout"]) AND($_POST["pro_bloque"]))
-    && (!empty($_POST["pro_ref"]) && ($_POST["pro_cat_id"]) && ($_POST["pro_libelle"]) && ($_POST["pro_description"]) && ($_POST["pro_prix"] )&& ($_POST["pro_stock"])&& ($_POST["pro_couleur"]) && ($_POST["pro_photo"]) && ($_POST["pro_d_ajout"]) && ($_POST["pro_bloque"]))) 
-    && preg_match 
+
+
+
+  if(!empty($reference))
+  {
+    try
     {
-       
+         // preparation de la requete d'insertion
+         $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
+         VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
+     
+     // on lie chaque marqueur à une valeur
+     
+             $pdoStat->bindParam(':categorie', $categorie,PDO::PARAM_INT);
+             $pdoStat->bindParam(':reference', $reference,PDO::PARAM_STR);
+             $pdoStat->bindParam(':libelle', $libelle,PDO::PARAM_STR);
+             $pdoStat->bindParam(':descrip', $description, PDO::PARAM_STR); // ici ton ;description n'en a pas du coup pas de correspondance entre les deux
+             $pdoStat->bindParam(':prix', $prix,PDO::PARAM_INT);
+             $pdoStat->bindParam(':stock', $stock,PDO::PARAM_INT);
+             $pdoStat->bindParam(':couleur', $couleur,PDO::PARAM_STR);
+             $pdoStat->bindParam(':photo', $photo,PDO::PARAM_STR);
+             $pdoStat->bindParam(':dateAjout', $dateAjout);
+             $pdoStat->bindParam(':produit_bloque', $bloque);
+     
+     
+     // éxécution de la requete préparé
+     
+             $pdoStat->execute();
+     
+     //Redirection vers le tableau
+             header("Location:tableau.php");
     }
-
-
-    
-
+  
     
     
-        // preparation de la requete d'insertion
-        $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
-    VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
-
-// on lie chaque marqueur à une valeur
-
-        $pdoStat->bindParam(':categorie', $categorie,PDO::PARAM_INT);
-        $pdoStat->bindParam(':reference', $reference,PDO::PARAM_STR);
-        $pdoStat->bindParam(':libelle', $libelle,PDO::PARAM_STR);
-        $pdoStat->bindParam(':descrip', $description, PDO::PARAM_STR); // ici ton ;description n'en a pas du coup pas de correspondance entre les deux
-        $pdoStat->bindParam(':prix', $prix,PDO::PARAM_INT);
-        $pdoStat->bindParam(':stock', $stock,PDO::PARAM_INT);
-        $pdoStat->bindParam(':couleur', $couleur,PDO::PARAM_STR);
-        $pdoStat->bindParam(':photo', $photo,PDO::PARAM_STR);
-        $pdoStat->bindParam(':dateAjout', $dateAjout);
-        $pdoStat->bindParam(':produit_bloque', $bloque);
-
-
-// éxécution de la requete préparé
-
-        $pdoStat->execute();
-
-//Redirection vers le tableau
-        header("Location:tableau.php");
-        die();
-
-
-    }
-    else
+    catch(PDOException $e)
     {
-        header("Location:produits_ajout.php");
+        echo 'Erreur : '.$e->getMessage();
     }
-
 }
-
-
-
-
-
-
-
- 
+  
+else
+{
+    header("Location:produits_ajout.php");
+}
 
 ?>
