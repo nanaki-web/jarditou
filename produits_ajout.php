@@ -15,6 +15,7 @@ include("connexion_bdd.php");
 include("header.php");
 
 ?>
+<body>
 
 <p><span class="error">*remplir tout les champs </span></p>
 <!-- formulaire -->
@@ -26,52 +27,51 @@ echo '<div class=" col-12" >';
 <!-- identifiant -->
 <div class="form-group">
     <label for="identifiant">ID : </label>
-    <input type="text" name="identifiant" class="form-control" id="id" disabled aria-describedby="">
+    <input type="text" name="identifiant" class="form-control" id="id" disabled aria-describedby="" placeholder="Identifiant">
 
 </div>
   <!-- // reference -->
 
 <div class="form-group">
-    <label for="reference">Référence : </label>
-    <input type="text" name="reference" class="form-control"   id="reference" aria-describedby="" >
-  
-
+    <label for="reference">Référence* : </label>
+    <input type="text" name="reference" class="form-control"  id="reference" required aria-describedby="" >
 </div>
+<span id="idReference"></span>
 
   <!-- catégorie -->
 <div class="form-group">
     <label for="categorie">Catégorie * : </label>
-    <input type="text" name="categorie" class="form-control" id="categorie" aria-describedby="">
+    <input type="text" name="categorie" class="form-control" required id="categorie" aria-describedby="">
     
 
 </div>
 <!-- libéllé -->
 <div class="form-group">
     <label for="libelle">Libéllé *: </label>
-    <input type="text" name="libelle" class="form-control" id="libelle" aria-describedby="">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    <input type="text" name="libelle" class="form-control" required id="libelle" aria-describedby="">
+   
 </div>
 <!-- description -->
 <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+    <textarea class="form-control" name="description"  id="description" rows="3"></textarea>
 </div>
 <!-- Prix -->
 <div class="form-group">
   <label for="reference">Prix *:</label>                  
-  <input type="text" name="prix" class="form-control" id="nom" aria-describedby="">           
+  <input type="text" name="prix" class="form-control" required id="nom" aria-describedby="">           
 </div>
 <!-- stock -->
 <div class="form-group">
-    <label for="stock">Stock *: </label>
+    <label for="stock">Stock: </label>
     <input type="text" name="stock" class="form-control" id="stock" aria-describedby="">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    
 </div>
 <!-- couleur -->
 <div class="form-group">
     <label for="couleur">Couleur : </label>
     <input type="text" name="couleur" class="form-control" id="couleur" aria-describedby="">
-    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+   
 </div>
 
 
@@ -110,6 +110,9 @@ echo '<div class=" col-12" >';
   </div>
 </form>
 
+<!-- importer un fichier .js -->
+<script src = "public/js/produits_ajout.js" ></script>
+</body>
 
 
 
@@ -123,7 +126,7 @@ echo '<div class=" col-12" >';
 <!-- --------------------------------------------------------------------------------------------------------- -->
 <!-- tu n'as pas de bouton submit normal que l'envoi du formulaire sne se fasse pas  -->
 <!-- --------------------------------------------------------------------------------------------------------- -->
-<input class="btn btn-primary" type="submit" value="envoyer">
+<input class="btn btn-primary" id = " idEnvoyer " type="submit" value="envoyer">
 
 
 
