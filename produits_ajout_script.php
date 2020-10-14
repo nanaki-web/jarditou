@@ -41,13 +41,72 @@ function valid_donnees($donnees)
 
 
 
-
-  if(!empty($reference) && ($categorie) && ($libelle) && ($prix))
-  {
-    try
+// if(!empty($reference))
+//   {
+//       $bool = preg_match ('/^0-9A-Za-z+$/',$_POST ["reference"]);
+//       echo "pregmatch : ".$bool."<br>";
+//       echo  "référence : ".$_POST["reference"]."<br>";
+//   }
+//   else
+//   {
+//       echo "la référence doit être renseigné"."<br>";
+//   }
+//   if(!empty($categorie))
+//   {
+//       echo "catégorie : ".$_POST["categorie"]."<br>";
+//   }   
+//   else
+//   {
+//       echo "la catégorie doit être renseigné"."<br>";
+//   }
+  
+//   if(!empty($libelle))
+//   {
+//       $bool = preg_match ('/^0-9A-Za-z+$/',$_POST ["libelle"]);
+//       echo "pregmatch : ".$bool."<br>";
+//       echo  "référence : ".$_POST["reference"]."<br>";
+//   }
+//   else
+//   {
+//       echo "le libéllé doit être renseigner ."."<br>";
+//   }
+//   if(!empty($prix))
+//   {
+//       $bool = preg_match ('/^0-9.*$/',$_POST ["prix"]);
+//       echo "pregmatch : ".$bool."<br>";
+//       echo  "référence : ".$_POST["prix"]."<br>";
+//   }
+//   else
+//   {
+//       echo "le prix doit être renseigné"."<br>";
+//   }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
-         // preparation de la requete d'insertion
-         $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
+        $errors= [];
+        if (empty($_POST['reference'])&& isset($_POST['reference']))
+        {
+            $errors['reference']= "la référence doit être renseigné";
+            // $bool = preg_match ('/^0-9A-Za-z+$/',$_POST ["reference"]);
+            // echo "pregmatch : ".$bool."<br>";
+            // echo  "référence : ".$_POST["reference"]."<br>";
+        }
+        // else
+        //   {
+        //       echo "la référence doit être renseigné"."<br>";
+        //   }
+
+        if(!empty($errors))
+
+        {
+            $_session_start();
+            $_session['errors'] = $errors;
+            header("Location:produits_ajout.php");
+        }
+        else
+        {
+            // preparation de la requete d'insertion
+
+            $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
          VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
      
      // on lie chaque marqueur à une valeur
@@ -67,22 +126,26 @@ function valid_donnees($donnees)
      // éxécution de la requete préparé
      
              $pdoStat->execute();
+              //Redirection vers le tableau
+             header("Location:tableau.php");
+        }
+        
+            
+         
+         
+
+    }
+        
      
      //Redirection vers le tableau
-             header("Location:tableau.php");
-    }
+            //  header("Location:tableau.php");
+    
   
     
     
-    catch(PDOException $e)
-    {
-        echo 'Erreur : '.$e->getMessage();
-    }
-}
-  
-else
-{
-    header("Location:produits_ajout.php");
-}
 
-?>
+
+//     header("Location:produits_ajout.php");
+
+
+ ?>

@@ -27,28 +27,28 @@ echo '<div class=" col-12" >';
 <!-- identifiant -->
 <div class="form-group">
     <label for="identifiant">ID : </label>
-    <input type="text" name="identifiant" class="form-control" id="id" disabled aria-describedby="" placeholder="Identifiant">
+    <input type="text" name="identifiant" class="form-control" id="id" disabled  placeholder="Identifiant">
 
 </div>
   <!-- // reference -->
 
 <div class="form-group">
     <label for="reference">Référence* : </label>
-    <input type="text" name="reference" class="form-control"  id="reference" required aria-describedby="" >
+    <input type="text" name="reference" class="form-control"  id="reference" >
 </div>
 <span id="idReference"></span>
 
   <!-- catégorie -->
 <div class="form-group">
     <label for="categorie">Catégorie * : </label>
-    <input type="text" name="categorie" class="form-control" required id="categorie" aria-describedby="">
+    <input type="text" name="categorie" class="form-control"  id="categorie" >
     
 
 </div>
 <!-- libéllé -->
 <div class="form-group">
     <label for="libelle">Libéllé *: </label>
-    <input type="text" name="libelle" class="form-control" required id="libelle" aria-describedby="">
+    <input type="text" name="libelle" class="form-control" id="libelle" >
    
 </div>
 <!-- description -->
@@ -59,18 +59,18 @@ echo '<div class=" col-12" >';
 <!-- Prix -->
 <div class="form-group">
   <label for="reference">Prix *:</label>                  
-  <input type="text" name="prix" class="form-control" required id="nom" aria-describedby="">           
+  <input type="text" name="prix" class="form-control"  id="nom" >           
 </div>
 <!-- stock -->
 <div class="form-group">
     <label for="stock">Stock: </label>
-    <input type="text" name="stock" class="form-control" id="stock" aria-describedby="">
+    <input type="text" name="stock" class="form-control" id="stock" >
     
 </div>
 <!-- couleur -->
 <div class="form-group">
     <label for="couleur">Couleur : </label>
-    <input type="text" name="couleur" class="form-control" id="couleur" aria-describedby="">
+    <input type="text" name="couleur" class="form-control" id="couleur" >
    
 </div>
 
@@ -137,7 +137,7 @@ echo '<div class=" col-12" >';
 
 <br>
 
-<?php
+ <?php
 
 include("footer.php");
 
