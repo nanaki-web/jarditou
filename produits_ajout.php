@@ -1,4 +1,6 @@
-
+<?php
+  session_start();
+?>
 
 
 
@@ -13,11 +15,17 @@
 <?php
 include("connexion_bdd.php");
 include("header.php");
-
 ?>
+
 <body>
 
 <p><span class="error">*remplir tout les champs </span></p>
+<?php
+if(array_key_exists('errors',$_SESSION)):?>
+  <div class="alert alert-danger">
+    <?= implode('<br>',$_SESSION['errors']);?>
+  </div>
+<?php unset($_SESSION['errors']); endif;?>
 <!-- formulaire -->
 <form id="formu" name="formu" action="produits_ajout_script.php" method="POST">
 

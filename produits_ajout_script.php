@@ -40,66 +40,33 @@ function valid_donnees($donnees)
 
 
 
-
-// if(!empty($reference))
-//   {
-//       $bool = preg_match ('/^0-9A-Za-z+$/',$_POST ["reference"]);
-//       echo "pregmatch : ".$bool."<br>";
-//       echo  "référence : ".$_POST["reference"]."<br>";
-//   }
-//   else
-//   {
-//       echo "la référence doit être renseigné"."<br>";
-//   }
-//   if(!empty($categorie))
-//   {
-//       echo "catégorie : ".$_POST["categorie"]."<br>";
-//   }   
-//   else
-//   {
-//       echo "la catégorie doit être renseigné"."<br>";
-//   }
-  
-//   if(!empty($libelle))
-//   {
-//       $bool = preg_match ('/^0-9A-Za-z+$/',$_POST ["libelle"]);
-//       echo "pregmatch : ".$bool."<br>";
-//       echo  "référence : ".$_POST["reference"]."<br>";
-//   }
-//   else
-//   {
-//       echo "le libéllé doit être renseigner ."."<br>";
-//   }
-//   if(!empty($prix))
-//   {
-//       $bool = preg_match ('/^0-9.*$/',$_POST ["prix"]);
-//       echo "pregmatch : ".$bool."<br>";
-//       echo  "référence : ".$_POST["prix"]."<br>";
-//   }
-//   else
-//   {
-//       echo "le prix doit être renseigné"."<br>";
-//   }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST')
-    {
+   
+    
         $errors= [];
-        if (empty($_POST['reference'])&& isset($_POST['reference']))
+        if (!isset($reference) || empty($reference) || preg_match("^[0-9]*$",$reference))
         {
-            $errors['reference']= "la référence doit être renseigné";
-            // $bool = preg_match ('/^0-9A-Za-z+$/',$_POST ["reference"]);
-            // echo "pregmatch : ".$bool."<br>";
-            // echo  "référence : ".$_POST["reference"]."<br>";
+            $errors['reference']= "La référence doit être renseigné";   
         }
-        // else
-        //   {
-        //       echo "la référence doit être renseigné"."<br>";
-        //   }
+        if (!isset($categorie) || empty($categorie))
+        {
+            $errors['categorie']= "La catégorie doit être renseigné";   
+        }
+        if (!isset($libelle) || empty($libelle) )
+        {
+            $errors['libelle']= "Le libéllé doit être renseigné";   
+        }
+        if (!isset($prix) || empty($prix) )
+        {
+            $errors['prix']= "Le prix doit être renseigné et être un nombre entier ou décimal";   
+        }
+
+        // var_dump ($errors);
+        // die();
 
         if(!empty($errors))
-
         {
-            $_session_start();
-            $_session['errors'] = $errors;
+            session_start();
+            $_SESSION['errors'] = $errors;
             header("Location:produits_ajout.php");
         }
         else
@@ -134,18 +101,5 @@ function valid_donnees($donnees)
          
          
 
-    }
-        
-     
-     //Redirection vers le tableau
-            //  header("Location:tableau.php");
-    
-  
-    
-    
-
-
-//     header("Location:produits_ajout.php");
-
-
+            
  ?>
