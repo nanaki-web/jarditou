@@ -43,7 +43,7 @@ function valid_donnees($donnees)
    
     
         $errors= [];
-        if (!isset($reference) || empty($reference) || preg_match("^[0-9]*$",$reference))
+        if (!isset($reference) || empty($reference) || preg_match("[a-zA-A0-9_-]",$reference))
         {
             $errors['reference']= "La référence doit être renseigné";   
         }
@@ -51,13 +51,13 @@ function valid_donnees($donnees)
         {
             $errors['categorie']= "La catégorie doit être renseigné";   
         }
-        if (!isset($libelle) || empty($libelle) )
+        if (!isset($libelle) || empty($libelle)|| preg_match("^[a-zA-Z0-9àêéïù ]+",$libelle))
         {
             $errors['libelle']= "Le libéllé doit être renseigné";   
         }
-        if (!isset($prix) || empty($prix) )
+        if (!isset($prix) || empty($prix) || preg_match("^([0-9]{1,3})([.])(([0-9]){2})$",$prix))
         {
-            $errors['prix']= "Le prix doit être renseigné et être un nombre entier ou décimal";   
+            $errors['prix']= "Le prix doit être renseigné et mettre un prix avec 2 chiffres apr le point";   
         }
 
         // var_dump ($errors);
@@ -72,7 +72,6 @@ function valid_donnees($donnees)
         else
         {
             // preparation de la requete d'insertion
-
             $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
          VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
      
