@@ -18,46 +18,46 @@
 require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
 $db = connexionBase(); // Appel de la fonction de connexion
 // declaration des variables
-$reference = valid_donnees($_POST["reference"]);//1
-$categorie = valid_donnees($_POST["categorie"]);//2
-$libelle = valid_donnees($_POST["libelle"]);//3
-$description = valid_donnees($_POST["description"]);//4
-$prix = valid_donnees($_POST["prix"]);//5
-$stock = valid_donnees($_POST["stock"]);//6
-$couleur = valid_donnees($_POST["couleur"]);//7
-$photo = valid_donnees($_POST["photo"]);//8
-$dateAjout = valid_donnees($_POST["dateAjout"]);//9
-$bloque = valid_donnees($_POST["bloque"]);//10
+$reference = $_POST["reference"];//1
+$categorie = $_POST["categorie"];//2
+$libelle = $_POST["libelle"];//3
+$description = $_POST["description"];//4
+$prix = $_POST["prix"];//5
+$stock = $_POST["stock"];//6
+$couleur =$_POST["couleur"];//7
+$photo = $_POST["photo"];//8
+$dateAjout =$_POST["dateAjout"];//9
+$bloque = $_POST["bloque"];//10
 
 
-function valid_donnees($donnees)
-{
-    $donnees = trim($donnees); // trim == supprimer les espaces inutiles
-    $donnees = stripslashes($donnees); //stripslashes == supprimer les antislashes 
-    $donnees = htmlspecialchars($donnees); //htmlspecialchars == échapper certains caractères spéciaux comme les chevrons « < » et « > » en les transformant en entités HTML
-    return $donnees;
-}
+// function valid_donnees($donnees)
+// {
+//     $donnees = trim($donnees); // trim == supprimer les espaces inutiles
+//     $donnees = stripslashes($donnees); //stripslashes == supprimer les antislashes 
+//     $donnees = htmlspecialchars($donnees); //htmlspecialchars == échapper certains caractères spéciaux comme les chevrons « < » et « > » en les transformant en entités HTML
+//     return $donnees;
+// }
 
 
 
    
     
         $errors= [];
-        if (!isset($reference) || empty($reference) || preg_match("[a-zA-A0-9_-]",$reference))
+        if (!array_key_exists ('reference',$_POST)|| $_POST ['reference'] == '' || preg_match("[a-zA-Z0-9_-]",$_POST["reference"]))
         {
             $errors['reference']= "La référence doit être renseigné";   
         }
-        if (!isset($categorie) || empty($categorie))
+        if (!array_key_exists ('categorie',$_POST) || $_POST ['categorie'] == '' )
         {
             $errors['categorie']= "La catégorie doit être renseigné";   
         }
-        if (!isset($libelle) || empty($libelle)|| preg_match("^[a-zA-Z0-9àêéïù ]+",$libelle))
+        if (!array_key_exists ('libelle',$_POST) || $_POST ['libelle'] == ''|| preg_match("[a-zA-Z0-9àêéïù ]",$_POST['libelle']))
         {
             $errors['libelle']= "Le libéllé doit être renseigné";   
         }
-        if (!isset($prix) || empty($prix) || preg_match("^([0-9]{1,3})([.])(([0-9]){2})$",$prix))
+        if (!array_key_exists ('prix',$_POST) || $_POST ['prix'] == ''|| preg_match("([0-9]{1,4})([.])(([0-9]){2})",$_POST["prix"]))
         {
-            $errors['prix']= "Le prix doit être renseigné et mettre un prix avec 2 chiffres apr le point";   
+            $errors['prix']= "Le prix doit être renseigné et mettre un prix avec 2 chiffres après le point";   
         }
 
         // var_dump ($errors);
@@ -71,34 +71,47 @@ function valid_donnees($donnees)
         }
         else
         {
-            // preparation de la requete d'insertion
-            $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix, pro_stock, pro_couleur,pro_photo , pro_d_ajout,pro_bloque )   
-         VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
-     
-     // on lie chaque marqueur à une valeur
-     
-             $pdoStat->bindParam(':categorie', $categorie,PDO::PARAM_INT);
-             $pdoStat->bindParam(':reference', $reference,PDO::PARAM_STR);
-             $pdoStat->bindParam(':libelle', $libelle,PDO::PARAM_STR);
-             $pdoStat->bindParam(':descrip', $description, PDO::PARAM_STR); // ici ton ;description n'en a pas du coup pas de correspondance entre les deux
-             $pdoStat->bindParam(':prix', $prix,PDO::PARAM_INT);
-             $pdoStat->bindParam(':stock', $stock,PDO::PARAM_INT);
-             $pdoStat->bindParam(':couleur', $couleur,PDO::PARAM_STR);
-             $pdoStat->bindParam(':photo', $photo,PDO::PARAM_STR);
-             $pdoStat->bindParam(':dateAjout', $dateAjout);
-             $pdoStat->bindParam(':produit_bloque', $bloque);
-     
-     
-     // éxécution de la requete préparé
-     
-             $pdoStat->execute();
-              //Redirection vers le tableau
-             header("Location:tableau.php");
-        }
+            try 
+            {
+                // preparation de la requete d'insertion sans injection sql
+            $pdoStat = $db->prepare('INSERT INTO produits(pro_cat_id, pro_ref, pro_libelle, pro_description, pro_prix,pro_stock, pro_couleur,pro_photo,pro_d_ajout,pro_bloque )   
+            VALUES(:categorie,:reference,:libelle,:descrip,:prix,:stock,:couleur,:photo,:dateAjout,:produit_bloque)'); // ici ton :description a un s
+               
+               
+        // on lie chaque marqueur à une valeur
         
-            
-         
-         
+                $pdoStat->bindParam(':categorie', $categorie,PDO::PARAM_INT);
+                $pdoStat->bindParam(':reference', $reference,PDO::PARAM_STR);
+                $pdoStat->bindParam(':libelle', $libelle,PDO::PARAM_STR);
+                $pdoStat->bindParam(':descrip', $description, PDO::PARAM_STR); // ici ton ;description n'en a pas du coup pas de correspondance entre les deux
+                $pdoStat->bindParam(':prix', $prix,PDO::PARAM_INT);
+                $pdoStat->bindParam(':stock', $stock,PDO::PARAM_INT);
+                $pdoStat->bindParam(':couleur', $couleur,PDO::PARAM_STR);
+                $pdoStat->bindParam(':photo', $photo,PDO::PARAM_STR);
+                $pdoStat->bindParam(':dateAjout', $dateAjout);
+                $pdoStat->bindParam(':produit_bloque', $bloque);
+                
+           
+        // éxécution de la requete préparé
+        
+                $pdoStat->execute();
+               
+                // Libération de la connexion au serveur de BDD
+                $pdoStat->closeCursor();
 
-            
+           }
+        //    // Gestion des erreurs
+            catch (Exception $e) 
+            {
+
+                echo "La connexion à la base de données a échoué ! <br>";
+                echo "Merci de bien vérifier vos paramètres de connexion ...<br>";
+                echo "Erreur : " . $e->getMessage() . "<br>";
+                echo "N° : " . $e->getCode();
+                die("Fin du script");
+            }
+             //Redirection vers le tableau
+             header("Location:tableau.php");
+             exist;
+        }           
  ?>
