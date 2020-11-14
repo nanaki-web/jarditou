@@ -1,13 +1,16 @@
 // recupération du formulaire et création d'un événement et annulation de rechargement de la page 
-// document.getElementById("formu").addEventListener("submit",function (e){
-//     // e.preventDefault();
-//     alert('produit enregistré !') ;
-// });
+document.getElementById("formu").addEventListener("submit",function (e){
+    e.preventDefault();
+    alert('produit enregistré !') ;
+});
 
-var validation = document.getElementById("idEnvoi");
-var reference = document.getElementById('reference');
-var reference_manquant = document.getElementById('idReference');
-validation.addEventListener('submit',f_valid);
+
+
+
+// var validation = document.getElementById("idEnvoi");
+// var reference = document.getElementById('reference');
+// var reference_manquant = document.getElementById('idReference');
+// validation.addEventListener('submit',f_valid);
 
 
     
@@ -21,12 +24,12 @@ validation.addEventListener('submit',f_valid);
     //     document.getElementById("idReference").innerHTML="Veuillez entrer une référence";
     //     verif = false ;
     // }
-   function f_valid (e)
-   {
-    if (reference.validity.valueMissing)
-    {
-        e.preventDefault();
-        reference_manquant.textContent = 'référence manquant';
-        reference_manquant.style.color = 'red';
-    }
-   }
+//    function f_valid (e)
+//    {
+//     if (reference.validity.valueMissing)
+//     {
+//         e.preventDefault();
+//         reference_manquant.textContent = 'référence manquant';
+//         reference_manquant.style.color = 'red';
+//     }
+//    }

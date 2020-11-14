@@ -10,7 +10,7 @@
 
 
 
-
+// je ne comprend pas pkoi l'insertion et la regex ne fonctionne pas .
 
 
 // //verification
